@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservasi Hotel</title>
+</head>
+<body>
+    <div style="max-width: 800px; align-items: center; display: flex; flex-direction: column" >
+        <div>
+            <h1>Formulir Reservasi Hotel</h1>
+        </div>
+
+        <div>
+            <form id="reservasi-form">
+            <div style="display: flex; gap: 87px; width: 320px; height: 40px; align-items: center;">
+                <label for="kode-reservasi">Kode Reservasi:</label>
+            <input type="text" id="kode-reservasi" name="kode-reservasi" required><br>
+            </div><br>
+
+            <div style="display: flex; gap: 90px; width: 100px; height: 40px; align-items: center;">
+                <label for="nama">Nama Pengunjung:</label>
+                <input type="text" id="nama-pengunjung" name="nama-pengunjung" >
+            </div><br>
+
+            <div style="display: flex; gap: 87px; width: 320px; height: 40px; align-items: center;">
+                <label for="notlpn">Nomor Telepon:</label>
+                <input type="text" name="notlpn" id="notlpn">
+            </div><br>
+
+            <div style="display: flex; align-items: center; gap: 90px; ">
+                <label>Alamat:</label>
+                <textarea name="alamat" id="alamat" cols="30" rows="10"></textarea>
+            </div><br>
+
+            <div style="display: flex; align-items: center; gap: 80px; ">
+                <label for="date-check-in">Tanggal Check-in:</label>
+                <input type="date" name="date-check-in" id="date-check-in">
+            </div><br>
+
+            <div style="display: flex; align-items: center; gap: 73px;">
+                <label for="date-check-out">Tanggal Check-out:</label>
+                <input type="date" name="date-check-out" id="date-check-out">
+            </div><br>
+
+            <div style="display: flex; align-items: center; gap: 140px;">
+                <label for="kamar">Jenis Kamar:</label>
+                <select name="kamar" id="kamar">
+                    <option value="single">Single</option>
+                    <option value="double">Double</option>
+                </select>
+            </div><br>
+
+            <div style="display: flex; align-items: center; gap: 23px;">
+                <label for="tamu-dewasa">Jumlah Tamu Dewasa:</label>
+                <input type="number" name="tamu-dewasa" id="tamu-dewasa">
+            </div><br>
+
+            <div style="display: flex; align-items: center; gap:10px;">
+                <label for="tamu-anak">Jumlah Tamu Anak-anak</label>
+                <input type="number" name="tamu-anak" id="tamu-anak">
+            </div><br>
+
+            <div style="margin-left: 220px">
+                <input type="submit" value="Reservasi">
+            </div>
+        </div>
+    </div>
+</form>
+
+    <h2>Informasi Reservasi</h2>
+    <table id="informasi-reservasi">
+        <thead>
+            <tr>
+                <th>Kode Reservasi</th>
+                <th>Nama Pengunjung</th>
+                <th>Nomor Telepon</th>
+                <th>Alamat</th>
+                <th>Tanggal Check-in</th>
+                <th>Tanggal Check-out</th>
+                <th>Jenis Kamar</th>
+                <th>Jumlah Tamu Dewasa</th>
+                <th>Jumlah Anak-anak</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Informasi reservasi akan ditampilkan di sini -->
+        </tbody>
+    </table>
+
+    <script>
+        const reservasiForm = document.getElementById("reservasi-form");
+        const informasiReservasiTable = document.getElementById("informasi-reservasi").getElementsByTagName('tbody')[0];
+
+        reservasiForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const kodeReservasi = document.getElementById("kode-reservasi").value;
+            const namaPengunjung = document.getElementById("nama-pengunjung").value;
+            const nomorTelepon = document.getElementById("notlpn").value;
+            const Alamat = document.getElementById("alamat").value;
+            const checkIn = document.getElementById("date-check-in").value;
+            const checkOut = document.getElementById("date-check-out").value;
+            const jenisKamar = document.getElementById("kamar").value;
+            const jumlahTamuDewasa = document.getElementById("tamu-dewasa").value;
+            const jumlahAnak = document.getElementById("tamu-anak").value;
+
+            const newRow = informasiReservasiTable.insertRow();
+            newRow.innerHTML = `
+                <td>${kodeReservasi}</td>
+                <td>${namaPengunjung}</td>
+                <td>${nomorTelepon}</td>
+                <td>${Alamat}</td>
+                <td>${checkIn}</td>
+                <td>${checkOut}</td>
+                <td>${jenisKamar}</td>
+                <td>${jumlahTamuDewasa}</td>
+                <td>${jumlahAnak}</td>
+            `;
+
+            reservasiForm.reset();
+        });
+    </script>
+
+</body>
+</html>

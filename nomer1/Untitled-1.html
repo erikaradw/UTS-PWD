@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form Reservasi Hotel</title>
+</head>
+
+<body>
+    <h1>Form Reservasi Hotel</h1>
+
+    <form id="reservasi-form">
+        <label for="kode-reservasi">Kode Reservasi:</label>
+        <input type="text" id="kode-reservasi" name="kode-reservasi" required><br>
+
+        <label for="nama-pengunjung">Nama Pengunjung:</label>
+        <input type="text" id="nama-pengunjung" name="nama-pengunjung" required><br>
+
+        <label for="nomor-telepon">Nomor Telepon:</label>
+        <input type="tel" id="nomor-telepon" name="nomor-telepon" required><br>
+
+        <label for="check-in">Tanggal Check-in:</label>
+        <input type="date" id="check-in" name="check-in" required><br>
+
+        <label for="check-out">Tanggal Check-out:</label>
+        <input type="date" id="check-out" name="check-out" required><br>
+
+        <label for="jenis-kamar">Jenis Kamar:</label>
+        <select id="jenis-kamar" name="jenis-kamar" required>
+            <option value="kamar-standar">Kamar Standar</option>
+            <option value="kamar-deluxe">Kamar Deluxe</option>
+            <option value="suite">Suite</option>
+        </select><br>
+
+        <label for="jumlah-tamu-dewasa">Jumlah Tamu Dewasa:</label>
+        <input type="number" id="jumlah-tamu-dewasa" name="jumlah-tamu-dewasa" required><br>
+
+        <label for="jumlah-anak">Jumlah Anak-anak:</label>
+        <input type="number" id="jumlah-anak" name="jumlah-anak"><br>
+
+        <input type="submit" value="Reservasi">
+    </form>
+
+    <h2>Informasi Reservasi</h2>
+    <table id="informasi-reservasi">
+        <thead>
+            <tr>
+                <th>Kode Reservasi</th>
+                <th>Nama Pengunjung</th>
+                <th>Nomor Telepon</th>
+                <th>Tanggal Check-in</th>
+                <th>Tanggal Check-out</th>
+                <th>Jenis Kamar</th>
+                <th>Jumlah Tamu Dewasa</th>
+                <th>Jumlah Anak-anak</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Informasi reservasi akan ditampilkan di sini -->
+        </tbody>
+    </table>
+
+    <script>
+        const reservasiForm = document.getElementById("reservasi-form");
+        const informasiReservasiTable = document.getElementById("informasi-reservasi").getElementsByTagName('tbody')[0];
+
+        reservasiForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const kodeReservasi = document.getElementById("kode-reservasi").value;
+            const namaPengunjung = document.getElementById("nama-pengunjung").value;
+            const nomorTelepon = document.getElementById("nomor-telepon").value;
+            const checkIn = document.getElementById("check-in").value;
+            const checkOut = document.getElementById("check-out").value;
+            const jenisKamar = document.getElementById("jenis-kamar").value;
+            const jumlahTamuDewasa = document.getElementById("jumlah-tamu-dewasa").value;
+            const jumlahAnak = document.getElementById("jumlah-anak").value;
+
+            const newRow = informasiReservasiTable.insertRow();
+            newRow.innerHTML = `
+                <td>${kodeReservasi}</td>
+                <td>${namaPengunjung}</td>
+                <td>${nomorTelepon}</td>
+                <td>${checkIn}</td>
+                <td>${checkOut}</td>
+                <td>${jenisKamar}</td>
+                <td>${jumlahTamuDewasa}</td>
+                <td>${jumlahAnak}</td>
+            `;
+
+            reservasiForm.reset();
+        });
+    </script>
+</body>
+
+</html>
